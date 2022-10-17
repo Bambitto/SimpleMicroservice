@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: book-depl
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: bookservice
+ template:
+  metadata:
+   labels:
+    app: bookservice
+  spec:
+   containers:
+    - name: bookservice
+      image: bambitto/bookservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: book-clusterip-srv
+spec:
+ type: ClusterIP
+ selector:
+  app: bookservice
+ ports:
+  - name: bookservice
+    protocol: TCP
+    port: 80
+    targetPort: 80

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mssql-book-depl
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: mssql-book
+ template:
+  metadata:
+   labels:
+    app: mssql-book
+  spec:
+   containers:
+    - name: mssql-book
+      image: mcr.microsoft.com/mssql/server:2017-latest
+      ports:
+       - containerPort: 1433
+      env:
+       - name: MSSQL_PID
+         value: "Express"
+       - name: ACCEPT_EULA
+         value: "Y"
+       - name: MSSQL_SA_PASSWORD
+         valueFrom:
+          secretKeyRef:
+           name: mssql
+           key: SA_PASSWORD
+      volumeMounts:
+       - mountPath: /var/opt/mssql/data
+         name: mssqlbookdb
+   volumes:
+    - name: mssqlbookdb
+      persistentVolumeClaim:
+       claimName: mssql-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: mssqlbook-clusterip-srv
+spec:
+ type: ClusterIP
+ selector:
+  app: mssql-book
+ ports:
+  - name: mssql-book
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: mssqlbook-loadbalancer
+spec:
+ type: LoadBalancer
+ selector:
+  app: mssql-book
+ ports:
+  - protocol: TCP
+    port: 1433
+    targetPort: 1433
