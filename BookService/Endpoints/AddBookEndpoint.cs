@@ -27,10 +27,12 @@ namespace BookService.Endpoints
         {
             var book = new Book
             {
+                Id = Guid.NewGuid(),
                 Title = req.Title,
                 Author = req.Author,
                 Description = req.Description,
-                Id = Guid.NewGuid()
+                Gender = req.Gender,
+                Publisher = req.Publisher,            
             };
 
             var result = await _repo.AddBook(book);

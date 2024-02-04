@@ -31,7 +31,9 @@ namespace BookService.Endpoints
                     Id = x.Id,
                     Author = x.Author,
                     Title = x.Title,
-                    Description = x.Description
+                    Description = x.Description,
+                    Gender = x.Gender,
+                    Publisher = x.Publisher
                 })
             };
 

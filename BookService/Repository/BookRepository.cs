@@ -40,6 +40,8 @@ namespace BookService.Repository
             oldBook.Title = book.Title;
             oldBook.Author = book.Author;
             oldBook.Description = book.Description;
+            oldBook.Gender = book.Gender;
+            oldBook.Publisher = book.Publisher;
             return await _context.SaveChangesAsync() > 0;
         }
     }
