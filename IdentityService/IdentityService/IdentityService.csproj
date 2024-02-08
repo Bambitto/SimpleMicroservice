@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Contracts\Endpoints\**" />
+    <Content Remove="Contracts\Endpoints\**" />
+    <EmbeddedResource Remove="Contracts\Endpoints\**" />
+    <None Remove="Contracts\Endpoints\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FastEndpoints" Version="5.4.0" />
     <PackageReference Include="FastEndpoints.Security" Version="5.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -17,11 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Endpoints\" />
     <Folder Include="Contracts\Responses\" />
-    <Folder Include="Contracts\Requests\" />
     <Folder Include="Models\" />
-    <Folder Include="Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

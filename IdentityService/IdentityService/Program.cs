@@ -1,9 +1,9 @@
-var builder = WebApplication.CreateBuilder(args);
+global using FastEndpoints;
+global using FluentValidation;
 
+var builder = WebApplication.CreateBuilder();
+builder.Services.AddFastEndpoints();
 
 var app = builder.Build();
-
-app.UseHttpsRedirection();
-
+app.UseFastEndpoints();
 app.Run();
-

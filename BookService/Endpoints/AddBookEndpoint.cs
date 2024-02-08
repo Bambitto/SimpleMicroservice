@@ -39,7 +39,7 @@ namespace BookService.Endpoints
 
             if(!result)
             {
-                await SendStringAsync("Something went wrond", 400, cancellation: ct);
+                await SendStringAsync("Something went wrong", 400, cancellation: ct);
                 return;
             }
             try
