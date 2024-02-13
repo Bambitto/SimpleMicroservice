@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginModalComponent } from '../app/login-modal/login-modal.component'
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'WebPage';
   links = [
     {
@@ -28,4 +31,13 @@ export class AppComponent {
       link: '/news',
     }];
   value = '';
+
+  constructor(public dialog: MatDialog) { }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(LoginModalComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 }

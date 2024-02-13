@@ -7,13 +7,13 @@
 <body>
   <div class="head">
     <div class="home" id="top_menu">
-      <button mat-icon-button color="warn" class="btn" routerLink="/book-list">
+      <button mat-icon-button class="btn" routerLink="/book-list">
         <mat-icon>home</mat-icon>
       </button>
     </div>
     <div class="search" id="top_menu">
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
+      <mat-form-field class="example-form-field" color="accent">
+        <mat-label>Wyszukaj książke</mat-label>
         <input matInput type="text" [(ngModel)]="value">
         @if (value) {
         <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -21,9 +21,17 @@
         </button>
         }
       </mat-form-field>
+      <button mat-icon-button class="btn" routerLink="/book-list">
+        <mat-icon>search</mat-icon>
+      </button>
     </div>
-    <div class="account" id="top_menu"> 2</div>
+    <div class="account" id="top_menu">
+      <button mat-icon-button class="btn" (click)="openDialog('300ms','300ms')">
+        <mat-icon>account_box</mat-icon>
+      </button>
+    </div>
   </div>
+  <div class="line"></div>
   <div class="div_body">
     <nav mat-tab-nav-bar color="accent" [tabPanel]="tabPanel">
       @for (link of links; track link) {
