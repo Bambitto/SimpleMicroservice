@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Book } from '../book.model';
-import { CommonModule } from '@angular/common'
-import { NgOptimizedImage } from '@angular/common'
+import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
+import { Subscription } from 'rxjs';
+import { SharedService } from '../SharedService';
 
 @Component({
   selector: 'app-book-list',
@@ -13,7 +14,7 @@ import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   books: Book[] = [
     {
       id: 1,
@@ -100,11 +101,18 @@ export class BookListComponent implements OnInit {
   showedBooks: Book[] = this.books;
   public genres: string[] = ['Komedia', 'Kryminał', 'Powieść', 'Sci-finction', 'Kryminał', 'Powieść', 'Sci-finction', 'Kryminał', 'Powieść', 'Sci-finction']
   selectedGenre = "";
+  private searchSubscription: Subscription = new Subscription;
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.searchSubscription = this.sharedService.currentSearchTerm.subscribe(term => {
+      this.filterBooks(term);
+    });
+  }
 
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
   }
 
   onSelection(event: MatChipListboxChange) {
@@ -116,8 +124,17 @@ export class BookListComponent implements OnInit {
     } else {
       this.selectedGenre = "";
     }
-    
+  }
 
-    console.log(this.selectedGenre)
+  filterBooks(searchTerm: string) {
+    if (!searchTerm) {
+      this.showedBooks = this.books.slice(); // No search term, show all books
+    } else {
+      this.showedBooks = this.books.filter(book =>
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      console.log(searchTerm)
+    }
   }
 }

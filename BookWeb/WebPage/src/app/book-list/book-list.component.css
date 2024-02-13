@@ -11,7 +11,7 @@
   flex-grow:1;
   max-height:300px;
   cursor: pointer;
-  max-width:350px;
+  max-width:20rem;
 }
 
 .book img {

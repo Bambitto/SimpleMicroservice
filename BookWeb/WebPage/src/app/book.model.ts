@@ -1,8 +1,8 @@
 export interface Book {
   id: number;
   title: string;
-  location: string;
-  price: number;
+  genre: string;
+  author: string;
   imageUrl: string;
   isFavorite: boolean;
 }

@@ -14,16 +14,13 @@
     <div class="search" id="top_menu">
       <mat-form-field class="example-form-field" color="accent">
         <mat-label>Wyszukaj książke</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
+        <input matInput type="text" [(ngModel)]="value" (ngModelChange)="updateSearch()">
         @if (value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''" style="background-color: rgba(0, 0, 0, 0);">
           <mat-icon>close</mat-icon>
         </button>
         }
       </mat-form-field>
-      <button mat-icon-button class="btn" routerLink="/book-list">
-        <mat-icon>search</mat-icon>
-      </button>
     </div>
     <div class="account" id="top_menu">
       <button mat-icon-button class="btn" (click)="openDialog('300ms','300ms')">
