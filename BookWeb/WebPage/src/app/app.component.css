@@ -1,0 +1,30 @@
+.body {
+    background-color:black;
+}
+
+.head {
+    height: 75px;
+    display:flex;
+    width:100%;
+    margin-top:30px;
+}
+
+#top_menu {
+  width: 33.33%;
+  flex-direction: column;
+}
+
+.home {
+    text-align:left;
+    margin-left:2%;
+}
+
+.search {
+    text-align:center;
+}
+
+.account {
+    text-align: right;
+    margin-right:2%;
+}
+

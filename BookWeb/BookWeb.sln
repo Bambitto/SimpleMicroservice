@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{55FAA882-891
 		..\K8S\review-depl.yaml = ..\K8S\review-depl.yaml
 	EndProjectSection
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "WebPage", "WebPage\WebPage.esproj", "{84DD8250-5B21-4510-90EE-A7534A1A1B4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,12 @@ Global
 		{2153368A-C0FD-493E-A517-4F29C943E482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2153368A-C0FD-493E-A517-4F29C943E482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2153368A-C0FD-493E-A517-4F29C943E482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DD8250-5B21-4510-90EE-A7534A1A1B4E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

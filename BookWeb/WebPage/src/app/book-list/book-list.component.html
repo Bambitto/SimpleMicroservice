@@ -1,0 +1,14 @@
+<div class="book_list">
+  <div *ngFor="let book of books" class="book">
+    <div class="div_img">
+      <img [src]="book.imageUrl" alt="{{book.title}}">
+      <button mat-icon-button color="warn" class="btn">
+        <mat-icon *ngIf="!book.isFavorite">favorite_border</mat-icon>
+        <mat-icon *ngIf="book.isFavorite">favorite</mat-icon>
+      </button>
+    </div>
+    <h2>{{ book.title }}</h2>
+    <p>Location: {{ book.location }}</p>
+    <p>Price: ${{ book.price }} per night</p>
+  </div>
+</div>

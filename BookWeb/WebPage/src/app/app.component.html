@@ -1,0 +1,43 @@
+<!--<nav>
+  <a class="button" routerLink="/book-list" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Books</a> |
+  <a class="button" routerLink="/reviews" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Recenzje</a>
+</nav>-->
+<header>
+</header>
+<body>
+  <div class="head">
+    <div class="home" id="top_menu">
+      <button mat-icon-button color="warn" class="btn" routerLink="/book-list">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+    <div class="search" id="top_menu">
+      <mat-form-field class="example-form-field">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text" [(ngModel)]="value">
+        @if (value) {
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        }
+      </mat-form-field>
+    </div>
+    <div class="account" id="top_menu"> 2</div>
+  </div>
+  <div class="div_body">
+    <nav mat-tab-nav-bar color="accent" [tabPanel]="tabPanel">
+      @for (link of links; track link) {
+      <a mat-tab-link
+         [routerLink]="link.link"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <h3>{{link.label}}</h3>
+      </a>
+      }
+
+    </nav>
+    <div class="footer"></div>
+    <mat-tab-nav-panel #tabPanel><router-outlet></router-outlet></mat-tab-nav-panel>
+  </div>
+</body>
+
