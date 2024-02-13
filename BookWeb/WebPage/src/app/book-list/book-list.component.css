@@ -6,10 +6,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25%;
+  width: 20rem;
   background-color: white;
   flex-grow:1;
   max-height:300px;
+  cursor: pointer;
+  max-width:350px;
 }
 
 .book img {
@@ -25,10 +27,11 @@
 
 .book_list {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap */
-  justify-content: space-between; /* Adjust spacing between items */
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   overflow: auto;
+
 }
 
 .div_img {
@@ -36,9 +39,14 @@
     height:50%;
 }
 
-.div_img .btn {
-  position: absolute;
-  left:175%;
-  border: none;
-  cursor: pointer;
+.btn {
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    align-self:self-end;
+  }
+
+.genres {
+  display:flex;
+  justify-content:center;
 }
