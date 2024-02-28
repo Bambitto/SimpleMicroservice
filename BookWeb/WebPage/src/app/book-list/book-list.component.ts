@@ -98,7 +98,7 @@ export class BookListComponent implements OnInit, OnDestroy {
     },
 
   ];
-  showedBooks: Book[] = this.books;
+  displayedBooks: Book[] = this.books;
   public genres: string[] = ['Komedia', 'Kryminał', 'Powieść', 'Sci-finction', 'Kryminał', 'Powieść', 'Sci-finction', 'Kryminał', 'Powieść', 'Sci-finction']
   selectedGenre = "";
   private searchSubscription: Subscription = new Subscription;
@@ -117,20 +117,20 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   onSelection(event: MatChipListboxChange) {
     const selected = event.value;
-    if (selected.length) {
+    if (selected !== undefined) {
       // Assuming single selection, adjust if multiple
       this.selectedGenre = selected;
-      this.showedBooks = this.books.filter(book => book.genre === this.selectedGenre);
+      this.displayedBooks = this.books.filter(book => book.genre === this.selectedGenre);
     } else {
-      this.selectedGenre = "";
+      this.displayedBooks = this.books;
     }
   }
 
   filterBooks(searchTerm: string) {
     if (!searchTerm) {
-      this.showedBooks = this.books.slice(); // No search term, show all books
+      this.displayedBooks = this.books.slice(); // No search term, show all books
     } else {
-      this.showedBooks = this.books.filter(book =>
+      this.displayedBooks = this.books.filter(book =>
         book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         book.author.toLowerCase().includes(searchTerm.toLowerCase())
       );

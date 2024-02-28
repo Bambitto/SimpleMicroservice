@@ -7,5 +7,5 @@ export const routes: Routes = [
   { path: 'book-list', component: BookListComponent },
   { path: 'reviews', component: ReviewsComponent },
   { path: 'news', component: NewsComponent },
-  { path: '', redirectTo:'reviews', pathMatch: 'full' }
+  { path: '', redirectTo:'book-list', pathMatch: 'full' }
 ];

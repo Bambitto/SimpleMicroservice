@@ -42,8 +42,9 @@ mat-icon {
 }
 
 .line {
+  background-color: #ff8eb4;
   position: absolute;
   width: 100%;
-  height: 0px;
-  border: 1px solid #ff8eb4;
+  height: 2px;
+
 }
